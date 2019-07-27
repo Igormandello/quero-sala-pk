@@ -9,6 +9,12 @@ body {
   font-family: 'Nunito', sans-serif;
   min-height: 100vh;
   font-size: 14px;
+  color: white;
+  background: radial-gradient(
+    75vw at center 25%,
+    $PLAYKIDS_COLOR,
+    lighten($color: $PLAYKIDS_COLOR, $amount: 15)
+  );
 
   section {
     display: none;
@@ -30,24 +36,24 @@ body {
   button {
     font-size: 1.2rem;
     line-height: calc(1.4rem + 16px);
-    color: $PLAYKIDS_COLOR;
     cursor: pointer;
     outline: none;
+    color: white;
 
     margin-top: 2rem;
     padding: 4px 1.2rem;
 
-    border: 2px solid rgba($color: $PLAYKIDS_COLOR, $alpha: 0.8);
-    background-color: rgba($color: $PLAYKIDS_COLOR, $alpha: 0.1);
+    border: 2px solid rgba($color: white, $alpha: 0.8);
+    background-color: rgba($color: white, $alpha: 0.06);
     border-radius: 2.4rem;
     transition: background-color 0.3s;
 
     &:hover {
-      background-color: rgba($color: $PLAYKIDS_COLOR, $alpha: 0.15);
+      background-color: rgba($color: white, $alpha: 0.12);
     }
 
     &:active {
-      background-color: rgba($color: $PLAYKIDS_COLOR, $alpha: 0.20);
+      background-color: rgba($color: white, $alpha: 0.16);
     }
 
     &.loading {

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import Login from './components/Login'
+import RoomsGrid from './components/RoomsGrid'
+
 import GoogleCalendar from './js/GoogleCalendar'
 import './css/style.css'
 
@@ -11,19 +13,13 @@ class App extends Component {
   }
 
   componentDidMount() {
-    GoogleCalendar.loadClient(this.signInStatusChanged, () => this.setState({ isLoading: false }))
-  }
-
-  signInStatusChanged = (isLogged) => {
-    if (isLogged) {
-      this.setState({ isLogged: true })
-      GoogleCalendar.doTheTrick()
-    }
+    GoogleCalendar.loadClient(isLogged => this.setState({ isLogged }), () => this.setState({ isLoading: false }))
   }
 
   render = () => (
     <div className="app">
       { !this.state.isLogged && <Login loading={this.state.isLoading} /> }
+      { this.state.isLogged && <RoomsGrid/>}
     </div>
   )
 }

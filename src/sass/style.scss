@@ -17,15 +17,11 @@ body {
   );
 
   section {
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
-
-    &.active {
-      display: flex;
-    }
   }
 
   h1 {
@@ -72,7 +68,7 @@ body {
         background-repeat: no-repeat;
         background-position: center;
         background-image: url("../assets/loading.gif");
-        filter: hue-rotate(40deg) saturate(20) brightness(1.2);
+        filter: saturate(0) brightness(100);
       }
     }
   }

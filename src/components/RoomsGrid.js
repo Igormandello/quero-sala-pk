@@ -23,10 +23,10 @@ export default class RoomsGrid extends Component {
     this.fetchRooms()
   }
 
-  fetchRooms() {
+  fetchRooms = () => {
     let now = new Date()
-    let next = new Date()
     let previous = new Date()
+    let next = new Date()
 
     if (now.getMinutes() >= 30) {
       previous.setMinutes(30, 0)
@@ -41,12 +41,14 @@ export default class RoomsGrid extends Component {
       previous.toJSON(),
       next.toJSON()
     ).then(this.parseCalendarResponse)
+
+    setTimeout(this.fetchRooms, next - now + 1000)
   }
 
   parseCalendarResponse = (response) => {
     let roomResults = response.result.calendars
     let rooms = this.queryItems.sort((a, b) => a.name.localeCompare(b.name)).map(item =>
-      <Room busy={roomResults[item.email].busy.length > 0} name={item.name}/>
+      <Room key={item.id} busy={roomResults[item.email].busy.length > 0} name={item.name}/>
     )
 
     this.setState({ rooms })

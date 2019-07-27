@@ -12,22 +12,44 @@ export default class RoomsGrid extends Component {
   }
 
   componentDidMount() {
-    let queryItems = 
-      Object.keys(roomsConfig.rooms)
-        .map(item => ({ id: item, email: roomsConfig.emailPrefix + item + roomsConfig.emailSufix }))
-    
-    GoogleCalendar.queryResources(
-      queryItems.map(item => ({ id: item.email })),
-      '2019-07-28T00:00:00Z',
-      '2019-07-29T00:00:00Z'
-    ).then(response => {
-      let roomResults = response.result.calendars
-      let rooms = queryItems.map(item =>
-        <Room busy={roomResults[item.email].busy.length > 0} name={roomsConfig.rooms[item.id]}/>
-      )
+    this.queryItems = 
+      Object.entries(roomsConfig.rooms)
+        .map(entry => ({ 
+          id: entry[0],
+          name: entry[1],
+          email: roomsConfig.emailPrefix + entry[0] + roomsConfig.emailSufix
+        }))
 
-      this.setState({ rooms })
-    })
+    this.fetchRooms()
+  }
+
+  fetchRooms() {
+    let now = new Date()
+    let next = new Date()
+    let previous = new Date()
+
+    if (now.getMinutes() >= 30) {
+      previous.setMinutes(30, 0)
+      next.setHours(now.getHours() + 1, 0, 0)
+    } else {
+      previous.setMinutes(0, 0)
+      next.setMinutes(30, 0)
+    }
+
+    GoogleCalendar.queryResources(
+      this.queryItems.map(item => ({ id: item.email })),
+      previous.toJSON(),
+      next.toJSON()
+    ).then(this.parseCalendarResponse)
+  }
+
+  parseCalendarResponse = (response) => {
+    let roomResults = response.result.calendars
+    let rooms = this.queryItems.sort((a, b) => a.name.localeCompare(b.name)).map(item =>
+      <Room busy={roomResults[item.email].busy.length > 0} name={item.name}/>
+    )
+
+    this.setState({ rooms })
   }
 
   render = () => (

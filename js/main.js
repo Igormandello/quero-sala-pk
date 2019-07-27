@@ -1,18 +1,35 @@
-let signInBtn = document.getElementById('signIn');
-let signOutBtn = document.getElementById('signOut');
+let loginSection = document.getElementById('login')
+let signInBtn = document.getElementById('signIn')
 
 function setupCalendar() {
-  signInBtn.onclick = GoogleCalendar.signIn
-  signOutBtn.onclick = GoogleCalendar.signOut
-  GoogleCalendar.loadClient(signInStatusChanged)
+  signInBtn.classList.add('loading')
+  GoogleCalendar.loadClient(signInStatusChanged, clientLoaded)
 }
 
 function signInStatusChanged(isLogged) {
   if (isLogged) {
-    signInBtn.style.display = 'none'
-    signOutBtn.style.display = 'block'
-  } else {
-    signInBtn.style.display = 'block'
-    signOutBtn.style.display = 'none'
+    signInBtn.classList.remove('active')
+    loginSection.classList.remove('active')
+    
+    gapi.client.directory.resources.calendars.list({ customer: 'my_customer' })
+      .then(resources => {
+        console.log(resources)
+        
+        gapi.client.calendar.freebusy.query({
+          resource: {
+            timeMin: "2019-07-27T00:00:00Z",
+            timeMax: "2019-07-28T00:00:00Z",
+            items: [ { id: 'br.movile.com_2d313231333237382d343735@resource.calendar.google.com' } ],
+            timeZone: 'UTC'
+          }
+        }).then((response) => {
+          console.log("Response", response);
+        })
+      })
   }
+}
+
+function clientLoaded() {
+  signInBtn.onclick = GoogleCalendar.signIn
+  signInBtn.classList.remove('loading')
 }

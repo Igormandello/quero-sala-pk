@@ -1,0 +1,65 @@
+$PLAYKIDS_COLOR: #65249a;
+
+body {
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+  min-height: 100vh;
+  font-size: 14px;
+
+  section {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    &.active {
+      display: flex;
+    }
+  }
+
+  h1 {
+    font-size: 2.6rem;
+    margin-bottom: 0;
+  }
+
+  a {
+    display: none;
+    font-size: 1.2rem;
+    line-height: calc(1.4rem + 16px);
+    color: $PLAYKIDS_COLOR;
+    cursor: pointer;
+
+    margin-top: 2rem;
+    padding: 4px 1.2rem;
+
+    border: 2px solid rgba($color: $PLAYKIDS_COLOR, $alpha: 0.8);
+    background-color: rgba($color: $PLAYKIDS_COLOR, $alpha: 0.1);
+    border-radius: 2.4rem;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: rgba($color: $PLAYKIDS_COLOR, $alpha: 0.15);
+    }
+
+    &.loading {
+      color: transparent;
+
+      &::before {
+        content: "";
+        display: block;
+        height: 100%;
+        width: 100%;
+        background-image: url("../assets/loading.gif");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        filter: hue-rotate(40deg) saturate(20) brightness(1.2);
+      }
+    }
+
+    &.active {
+      display: block;
+    }
+  }
+}

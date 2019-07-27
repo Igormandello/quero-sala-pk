@@ -2,11 +2,31 @@ const config = {
   clientId: '1005220868008-6124m941hpft1cjmrpco4vm82s38gvup.apps.googleusercontent.com',
   apiKey: 'AIzaSyDepoimIlEJvYILk65TumQ4elm3EbBAHIA',
   discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'],
-  scopes: 'https://www.googleapis.com/auth/calendar.readonly'
+  scopes: 'https://www.googleapis.com/auth/calendar.readonly',
+  //br.movile.com_{id}@resource.calendar.google.com
+  resourceIds: [
+    '2d313231333237382d343735', '2d32313831313534312d363939', '2d32323634373831323730',
+    '2d33313631373332373638', '2d3332323637393239363333', '2d3333313836313230313637',
+    '2d333631373431302d363135', '2d3434333238323133353233', '2d3533373435353339353732',
+    '2d3534393435363235333532', '2d3535303833313730393435', '2d35383137353730363931',
+    '2d3638313439353432373139', '2d3731333836303736343636', '2d3733313736383035343031',
+    '2d3735393531323535313933', '2d37363533313936313930', '2d373636313530353133',
+    '2d3832333631363338393834', '2d38373636363535313336', '2d39303436363035392d323339',
+    '3130393638373136363735', '3131373934353139363638', '3133373337383534323334',
+    '32303938393331313438', '32323333303532312d343332', '3233393939333534383139', 
+    '3234363930343337323534', '33353937363835343431', '3436323836333430353034',
+    '34373232353131313036', '3438313335313836353033', '3438353337383533383535',
+    '3439303436333230383036', '3533373330322d373238', '3535323137353931313235',
+    '373538363739312d353435', '37383635393833342d353138', '3830373339333031353532',
+    '38313735363038313130', '38343733313639342d383839', '39383938353338342d363836',
+    '6c6569747572696e68612e636f6d2e62725f…676f6f676c652e636f6d',
+    '6c6569747572696e68612e636f6d2e62725f…676f6f676c652e636f6d',
+    '6c6569747572696e68612e636f6d2e62725f…676f6f676c652e636f6d']
+  ]
 }
 
 class GoogleCalendar {
-  static loadClient(signInStatusChanged) {
+  static loadClient(signInStatusChanged, clientLoaded) {
     gapi.load('client:auth2', () => {
       gapi.client.init({
         apiKey: config.apiKey,
@@ -16,15 +36,13 @@ class GoogleCalendar {
       }).then(() => {
         gapi.auth2.getAuthInstance().isSignedIn.listen(signInStatusChanged)
         signInStatusChanged(gapi.auth2.getAuthInstance().isSignedIn.get())
+
+        clientLoaded()
       })
     })
   }
 
-  static signIn(event) {
+  static signIn() {
     gapi.auth2.getAuthInstance().signIn()
-  }
-
-  static signOut(event) {
-    gapi.auth2.getAuthInstance().signOut()
   }
 }

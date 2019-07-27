@@ -1,0 +1,31 @@
+{
+  "name": "quero-sala-pk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "Igor Mandello",
+  "license": "MIT",
+  "scripts": {
+    "start": "concurrently \"sass --watch src/sass:src/css\" \"PORT=80 react-scripts start\"",
+    "build": "react-scripts build",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages --banch master -d build"
+  },
+  "dependencies": {
+    "googleapis": "39",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-scripts": "2.1.1"
+  },
+  "devDependencies": {
+    "concurrently": "^4.0.1",
+    "gh-pages": "^2.0.1",
+    "sass": "^1.15.0"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

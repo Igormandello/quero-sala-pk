@@ -1,5 +1,9 @@
 $PLAYKIDS_COLOR: #65249a;
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: 'Nunito', sans-serif;
@@ -23,12 +27,12 @@ body {
     margin-bottom: 0;
   }
 
-  a {
-    display: none;
+  button {
     font-size: 1.2rem;
     line-height: calc(1.4rem + 16px);
     color: $PLAYKIDS_COLOR;
     cursor: pointer;
+    outline: none;
 
     margin-top: 2rem;
     padding: 4px 1.2rem;
@@ -42,24 +46,28 @@ body {
       background-color: rgba($color: $PLAYKIDS_COLOR, $alpha: 0.15);
     }
 
+    &:active {
+      background-color: rgba($color: $PLAYKIDS_COLOR, $alpha: 0.20);
+    }
+
     &.loading {
+      position: relative;
       color: transparent;
 
       &::before {
         content: "";
+        position: absolute;
         display: block;
-        height: 100%;
+        top: 4px;
+        left: 0;
+        height: calc(100% - 8px);
         width: 100%;
-        background-image: url("../assets/loading.gif");
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
+        background-image: url("../assets/loading.gif");
         filter: hue-rotate(40deg) saturate(20) brightness(1.2);
       }
-    }
-
-    &.active {
-      display: block;
     }
   }
 }

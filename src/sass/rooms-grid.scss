@@ -1,0 +1,8 @@
+.rooms-grid {
+  display: grid;
+  align-content: center;
+  grid-template-columns: repeat(5, min-content);
+  grid-gap: 16px;
+
+  padding: 26px 15%;
+}

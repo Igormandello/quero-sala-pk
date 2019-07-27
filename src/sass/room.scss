@@ -1,11 +1,12 @@
 .room {
   display: inline-flex;
   padding: 8px;
-  margin: 8px;
   border-radius: 8px;
-  background-color: rgba($color: black, $alpha: 0.16);
+  background-color: rgba($color: black, $alpha: 0.2);
+  border: 1px solid rgba($color: black, $alpha: 0.25);
   align-items: center;
   font-size: 1rem;
+  box-shadow: 0 4px 8px rgba($color: black, $alpha: 0.18);
 
   .state {
     height: 36px;

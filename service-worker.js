@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/quero-sala-pk/precache-manifest.54856ee47de0eba5dc4cce8c17b876ba.js"
+  "/quero-sala-pk/precache-manifest.8fdf0c2ef5e7b2c4f031859cda90822f.js"
 );
 
 workbox.clientsClaim();

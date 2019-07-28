@@ -12,19 +12,19 @@ self.__precacheManifest = [
     "url": "/quero-sala-pk/static/js/runtime~main.aae2f7b9.js"
   },
   {
-    "revision": "9f416add01fb182d3a26",
-    "url": "/quero-sala-pk/static/js/main.9f416add.chunk.js"
+    "revision": "cd4f742c2e2b9a60c1dd",
+    "url": "/quero-sala-pk/static/js/main.cd4f742c.chunk.js"
   },
   {
     "revision": "c297502014d7cee094d0",
     "url": "/quero-sala-pk/static/js/1.c2975020.chunk.js"
   },
   {
-    "revision": "9f416add01fb182d3a26",
+    "revision": "cd4f742c2e2b9a60c1dd",
     "url": "/quero-sala-pk/static/css/main.bf145e2b.chunk.css"
   },
   {
-    "revision": "e0dea46f5460ba0fddc031018aba14c8",
+    "revision": "68bcce6c41b8bf62dc08674a6f848360",
     "url": "/quero-sala-pk/index.html"
   }
 ];

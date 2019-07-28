@@ -1,7 +1,7 @@
 {
   "main.css": "/quero-sala-pk/static/css/main.bf145e2b.chunk.css",
-  "main.js": "/quero-sala-pk/static/js/main.9f416add.chunk.js",
-  "main.js.map": "/quero-sala-pk/static/js/main.9f416add.chunk.js.map",
+  "main.js": "/quero-sala-pk/static/js/main.cd4f742c.chunk.js",
+  "main.js.map": "/quero-sala-pk/static/js/main.cd4f742c.chunk.js.map",
   "static/js/1.c2975020.chunk.js": "/quero-sala-pk/static/js/1.c2975020.chunk.js",
   "static/js/1.c2975020.chunk.js.map": "/quero-sala-pk/static/js/1.c2975020.chunk.js.map",
   "runtime~main.js": "/quero-sala-pk/static/js/runtime~main.aae2f7b9.js",
@@ -10,6 +10,6 @@
   "static/media/check.svg": "/quero-sala-pk/static/media/check.58288801.svg",
   "static/media/cross.svg": "/quero-sala-pk/static/media/cross.d31a54d0.svg",
   "index.html": "/quero-sala-pk/index.html",
-  "precache-manifest.54856ee47de0eba5dc4cce8c17b876ba.js": "/quero-sala-pk/precache-manifest.54856ee47de0eba5dc4cce8c17b876ba.js",
+  "precache-manifest.8fdf0c2ef5e7b2c4f031859cda90822f.js": "/quero-sala-pk/precache-manifest.8fdf0c2ef5e7b2c4f031859cda90822f.js",
   "service-worker.js": "/quero-sala-pk/service-worker.js"
 }

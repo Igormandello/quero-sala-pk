@@ -5,11 +5,12 @@
   "main": "index.js",
   "author": "Igor Mandello",
   "license": "MIT",
+  "homepage" : "http://igormandello.github.io/quero-sala-pk",
   "scripts": {
     "start": "concurrently \"sass --watch src/sass:src/css\" \"PORT=80 react-scripts start\"",
     "build": "react-scripts build",
     "predeploy": "yarn build",
-    "deploy": "gh-pages --banch master -d build"
+    "deploy": "gh-pages --branch master -d build"
   },
   "dependencies": {
     "googleapis": "39",

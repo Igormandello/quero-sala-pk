@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Login from './components/Login'
-import RoomsGrid from './components/RoomsGrid'
+import Rooms from './components/Rooms'
 
 import GoogleCalendar from './js/GoogleCalendar'
 import './css/style.css'
@@ -19,7 +19,7 @@ class App extends Component {
   render = () => (
     <div className="app">
       { !this.state.isLogged && <Login loading={this.state.isLoading} /> }
-      { this.state.isLogged && <RoomsGrid/>}
+      { this.state.isLogged && <Rooms/>}
     </div>
   )
 }

@@ -1,14 +1,19 @@
 import React, { Component } from 'react'
-import Room from '../components/Room'
+import Room from './Room'
+import Loader from './Loader'
 import GoogleCalendar from '../js/GoogleCalendar'
+import FormattedDateDelta from '../js/FormattedDateDelta'
 import roomsConfig from '../config/roomsConfig.json'
 
-import '../css/rooms-grid.css'
+import '../css/rooms.css'
 
-export default class RoomsGrid extends Component {
+export default class Rooms extends Component {
 
   state = {
-    rooms: []
+    rooms: [],
+    loading: true,
+    nextUpdate: null,
+    timeRemaining: null
   }
 
   componentDidMount() {
@@ -21,6 +26,7 @@ export default class RoomsGrid extends Component {
         }))
 
     this.fetchRooms()
+    setInterval(this.formatDate, 1000)
   }
 
   fetchRooms = () => {
@@ -43,6 +49,7 @@ export default class RoomsGrid extends Component {
     ).then(this.parseCalendarResponse)
 
     setTimeout(this.fetchRooms, next - now + 1000)
+    this.setState({ loading: true, nextUpdate: next, timeRemaining: new FormattedDateDelta(now, next) })
   }
 
   parseCalendarResponse = (response) => {
@@ -51,12 +58,25 @@ export default class RoomsGrid extends Component {
       <Room key={item.id} busy={roomResults[item.email].busy.length > 0} name={item.name}/>
     )
 
-    this.setState({ rooms })
+    this.setState({ rooms, loading: false })
   }
 
-  render = () => (
-    <section className="rooms-grid">
-      {this.state.rooms}
-    </section>
-  )
+  formatDate = () => {
+    this.setState({ timeRemaining: new FormattedDateDelta(new Date(), this.state.nextUpdate) })
+  }
+
+  render() {
+    const { rooms, loading, timeRemaining } = this.state
+    return (
+      <section className="rooms">
+        <div className="next-update">
+          <h2>Tempo para a próxima atualização: { !loading ? timeRemaining.toString() : '' }</h2>
+          { loading && <Loader color="white"/> }
+        </div>
+        <div className="rooms-grid">
+          {rooms}
+        </div>
+      </section>
+    )
+  }
 }

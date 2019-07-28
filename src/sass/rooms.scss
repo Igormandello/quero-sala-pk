@@ -1,0 +1,38 @@
+.rooms {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+
+  .next-update {
+    display: inline-flex;
+    align-items: flex-end;
+
+    h2 {
+      font-size: 1.6rem;
+      height: 2rem;
+      line-height: 2rem;
+      margin: 0;
+      margin-top: -2rem;
+    }
+
+    .loader {
+      margin-left: 12px;
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+
+  .rooms-grid {
+    display: grid;
+    align-content: center;
+    grid-template-columns: repeat(5, min-content);
+    grid-gap: 20px;
+  
+    justify-content: center;
+    align-content: center;
+  
+    padding: 32px 15%;
+  }
+}

@@ -2,6 +2,8 @@ import React from 'react'
 import Loader from './Loader'
 import GoogleCalendar from '../js/GoogleCalendar'
 
+import '../css/login.css'
+
 export default function Login(props) {
   const { loading } = props
   return (

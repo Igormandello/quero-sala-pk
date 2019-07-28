@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/quero-sala-pl/precache-manifest.78697cca4891289375ec01fdec286c01.js"
+  "/quero-sala-pk/precache-manifest.54856ee47de0eba5dc4cce8c17b876ba.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/quero-sala-pl/index.html", {
+workbox.routing.registerNavigationRoute("/quero-sala-pk/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
